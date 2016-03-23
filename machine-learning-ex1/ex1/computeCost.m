@@ -15,7 +15,7 @@ J = 0;
 
 diffs = sum((X * theta), 2) - y;
 summ = sum((diffs .^ 2));
-J = summ/(2*m)
+J = summ/(2*m);
 
 
 
