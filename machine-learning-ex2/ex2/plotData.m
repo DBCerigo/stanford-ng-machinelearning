@@ -15,12 +15,10 @@ figure; hold on;
 ins = find(y==1);
 outs = find(y==0);
 
-plot(X(ins,1), )
-
-
-
-
-
+plot(X(ins,1), X(ins,2), 'k+', 'LineWidth', 2, ...
+     'MarkerSize', 7);
+plot(X(outs,1), X(outs,2), 'ko', 'MarkerFaceColor', 'y', ...
+      'MarkerSize', 7);
 
 
 % =========================================================================
