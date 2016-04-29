@@ -97,6 +97,18 @@ J = J + ((lambda/(2*m)) * ...
                         sum(sum(Theta2(:, 2:end).^2))));
 
 % -------------------------------------------------------------
+% Calc gradients through backpropagation
+
+delt3s = (preds - Y);
+delt2s = (Theta2(:,2:end)' * delt3s) .* sigmoidGradient(z2s);
+
+for i = 1:m
+  Theta1_grad = Theta1_grad + (delt2s(:,i) * X(i,:));
+  Theta2_grad = Theta2_grad + (delt3s(:,i) * a2s(:,i)');
+end
+
+Theta1_grad = (1/m) * Theta1_grad;
+Theta2_grad = (1/m) * Theta2_grad;
 
 % =========================================================================
 
