@@ -24,6 +24,25 @@ sigma = 0.3;
 %
 
 
+Cs = [0.01 0.03 0.1 0.3 1 3 10 30];
+Ss = Cs;
+
+maxerr_c_s = [99999 0 0];
+
+for c = Cs
+    for s = Ss
+      model = svmTrain(X, y, c, @(x1, x2) gaussianKernel(x1, x2, s));
+      preds = svmPredict(model, Xval);
+      err = mean(preds ~= yval)
+      if (err < maxerr_c_s(1))
+          maxerr_c_s = [err c s]
+      endif
+    endfor
+endfor
+
+
+C = maxerr_c_s(2)
+sigma = maxerr_c_s(3)
 
 
 
