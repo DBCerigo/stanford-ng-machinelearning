@@ -27,8 +27,8 @@ centroids = zeros(K, n);
 %
 
 for cent = 1:K
-    tot = sum(idx == cent)
-    centroids(cent, :) = (1/tot) * sum(X(idx == cent,:))
+    tot = sum(idx == cent);
+    centroids(cent, :) = (1/tot) * sum(X(idx == cent,:));
 end
 
 
