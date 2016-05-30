@@ -26,11 +26,10 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
-
-
-
-
+for cent = 1:K
+    tot = sum(idx == cent)
+    centroids(cent, :) = (1/tot) * sum(X(idx == cent,:))
+end
 
 
 % =============================================================
