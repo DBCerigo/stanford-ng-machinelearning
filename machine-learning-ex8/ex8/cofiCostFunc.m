@@ -46,9 +46,15 @@ mDiffs(R == 0) = 0;
 mDiffs2 = mDiffs .^2;
 J = (1/2) * sum(sum(mDiffs2));
 
+% Add reg
+J = J + ( (lambda/2) * ( sum(sum(Theta .^2)) + sum(sum(X .^2)) ) )
+
 X_grad = mDiffs * Theta;
 Theta_grad = mDiffs' * X;
 
+% Add reg
+X_grad = X_grad + (lambda * X);
+Theta_grad = mDiffs' * X + (lambda * Theta);
 
 % =============================================================
 
